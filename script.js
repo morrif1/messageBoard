@@ -7,19 +7,25 @@ document.getElementById('messageForm').addEventListener('submit', function(event
     const usernameText = usernameInput.value;
     const messageText = messageInput.value;
 
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message';
+    // Create a message container
+    const messageContainer = document.createElement('div');
     
-    const usernameDisplay = document.createElement('strong');
+    // Create a username display
+    const usernameDisplay = document.createElement('div');
+    usernameDisplay.className = 'username';
     usernameDisplay.textContent = usernameText + ':';
     
-    const messageContent = document.createElement('span');
-    messageContent.textContent = ' ' + messageText;
+    // Create a message display
+    const messageDisplay = document.createElement('div');
+    messageDisplay.className = 'message';
+    messageDisplay.textContent = messageText;
 
-    messageDiv.appendChild(usernameDisplay);
-    messageDiv.appendChild(messageContent);
+    // Append username and message to the container
+    messageContainer.appendChild(usernameDisplay);
+    messageContainer.appendChild(messageDisplay);
 
-    document.getElementById('messages').appendChild(messageDiv);
+    // Append the message container to the messages div
+    document.getElementById('messages').appendChild(messageContainer);
     
     // Clear the input fields
     usernameInput.value = '';
