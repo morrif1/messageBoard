@@ -1,3 +1,9 @@
+// Retrieve username from local storage if it exists
+const savedUsername = localStorage.getItem('username');
+if (savedUsername) {
+    document.getElementById('usernameInput').value = savedUsername;
+}
+
 document.getElementById('messageForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
@@ -6,6 +12,9 @@ document.getElementById('messageForm').addEventListener('submit', function(event
     
     const usernameText = usernameInput.value;
     const messageText = messageInput.value;
+
+    // Save the username to local storage
+    localStorage.setItem('username', usernameText);
 
     // Create a message container
     const messageContainer = document.createElement('div');
@@ -27,7 +36,7 @@ document.getElementById('messageForm').addEventListener('submit', function(event
     // Append the message container to the messages div
     document.getElementById('messages').appendChild(messageContainer);
     
-    // Clear the input fields
-    usernameInput.value = '';
+    // Clear the message input field
     messageInput.value = '';
-});
+});    
+    
